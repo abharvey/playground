@@ -10,17 +10,24 @@ const ListContainer = styled.div`
 `;
 
 const Header = styled.div`
+    display: flex;
     height: 30px;
     width: 100%;
     justify-content: center;
+    flex-direction: column;
+    text-align: center;
     color: #fff;
     background-color: ${({color}) => color};
 `
 
-const AddCardBtn = styled.button`
+const AddCardBtn = styled.div`
+    cursor: pointer;
+
 `;
 
-const Move = styled.i``;
+const Move = styled.i`
+    cursor: pointer;
+`;
 
 const MoveRight = styled(Move)`
     &:before {
@@ -58,7 +65,7 @@ class CardList extends Component {
             <ListContainer>
                 <Header color={this.props.color}>{this.props.title}</Header>
                 {this.renderCards()}
-                <AddCardBtn onClick={this.openAddPrompt}/>            
+                <AddCardBtn onClick={this.openAddPrompt}> + Add Card </AddCardBtn>
             </ListContainer>
         );
     }

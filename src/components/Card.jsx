@@ -1,7 +1,10 @@
 // import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-const CardContainer = styled.span``;
+const CardContainer = styled.span`
+    display: flex;
+    width: 100%;
+`;
 
 // class Card extends PureComponent {
 //     render() { 
