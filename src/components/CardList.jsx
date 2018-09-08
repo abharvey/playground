@@ -18,7 +18,20 @@ const Header = styled.div`
 `
 
 const AddCardBtn = styled.button`
+`;
 
+const Move = styled.i``;
+
+const MoveRight = styled(Move)`
+    &:before {
+        content: "\\03e";
+    }
+`;
+
+const MoveLeft = styled(Move)`
+    &:before {
+        content: "\\003c";
+    }
 `;
 
 class CardList extends Component {
@@ -27,11 +40,24 @@ class CardList extends Component {
         this.props.addCard(newCard, this.props.id);
     }
 
+    renderCards() {
+        return this.props.cards.map((card, i) => {
+
+            return (
+                <Card key={`${i}-${card}`}>
+                {i > 0 ? <MoveLeft /> : null}
+                {card}
+                {i < this.props.cards.length ? <MoveRight /> : null}
+                </Card>
+            );
+        });
+    }
+
     render() { 
         return (
             <ListContainer>
                 <Header color={this.props.color}>{this.props.title}</Header>
-                {this.props.cards.map((card, i) => <Card text={card} key={`${i}-${card}`}/>)}
+                {this.renderCards()}
                 <AddCardBtn onClick={this.openAddPrompt}/>            
             </ListContainer>
         );
